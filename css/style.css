@@ -18,7 +18,44 @@ body {
 /* Основные стили */
 .wrapper {
   overflow: hidden;
+  opacity: 0;
+  transition: all 1s ease 0s;
+  -webkit-transition: all 1s ease 0s;
+  -moz-transition: all 1s ease 0s;
+  -ms-transition: all 1s ease 0s;
+  -o-transition: all 1s ease 0s;
 }
+
+.wrapper.active {
+  opacity: 1;
+}
+
+.wrapper.active .parallax__wave {
+  opacity: 1;
+  transition: all 1s ease 1s;
+  -webkit-transition: all 1s ease 1s;
+  -moz-transition: all 1s ease 1s;
+  -ms-transition: all 1s ease 1s;
+  -o-transition: all 1s ease 1s;
+}
+.wrapper.active .parallax__rope {
+  opacity: 1;
+  transition: all 1s ease 1.8s;
+  -webkit-transition: all 1s ease 1.8s;
+  -moz-transition: all 1s ease 1.8s;
+  -ms-transition: all 1s ease 1.8s;
+  -o-transition: all 1s ease 1.8s;
+}
+
+.wrapper.active .parallax__lighthouse {
+  bottom: 130px;
+  transition: all 0.8s ease 2.5s;
+  -webkit-transition: all 0.8s ease 2.5s;
+  -moz-transition: all 0.8s ease 2.5s;
+  -ms-transition: all 0.8s ease 2.5s;
+  -o-transition: all 0.8s ease 2.5s;
+}
+
 .page {
   position: absolute;
   width: 100%;
@@ -70,6 +107,7 @@ body {
   position: absolute;
   width: 120%;
   left: -10%;
+  opacity: 0;
 }
 
 .parallax__rope img {
@@ -88,6 +126,29 @@ body {
   top: -11.66667%;
   transform: scale(1.13889);
 }
+
+.parallax__rope_1 .parallax__element {
+  transform: scale(0.6);
+  -moz-transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  -webkit-transform: scale(0.6);
+  -o-transform: scale(0.6);
+}
+
+.parallax__rope_2 .parallax__element {
+  transform: scale(0.75556);
+  -moz-transform: scale(0.75556);
+  -ms-transform: scale(0.75556);
+  -webkit-transform: scale(0.75556);
+  -o-transform: scale(0.75556);
+}
+.parallax__rope_3 .parallax__element {
+  transform: scale(0.98889);
+  -moz-transform: scale(0.98889);
+  -ms-transform: scale(0.98889);
+  -webkit-transform: scale(0.98889);
+  -o-transform: scale(0.98889);
+}
 .parallax__element {
   position: absolute;
 }
@@ -97,8 +158,7 @@ body {
   width: 280px;
   height: 280px;
   margin: 0px 0px 0px -140px;
-  animation: swing 2s infinite alternate
-    cubic-bezier(0.455, 0.03, 0.515, 0, 955);
+  animation: swing 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .parallax__element_1 {
   top: 28%;
@@ -163,6 +223,7 @@ body {
   background: url("../img/waves/wave-plain.png") 0 0 / auto 101% repeat-x;
   left: -100%;
   width: 300%;
+  opacity: 0;
 }
 .parallax__wave_1 {
   bottom: 180px;
@@ -171,17 +232,71 @@ body {
   background: url("../img/waves/wave-paint.png") 0 0 / auto 101% repeat-x;
 }
 .parallax__wave_2 {
+  bottom: 144px;
+  height: 115px;
+  animation: wave 6.66667s 0.1s infinite linear;
+  /* background: url("../img/waves/wave-paint.png") 0 0 / auto 101% repeat-x; */
 }
 .parallax__wave_3 {
-}
-.parallax__lighthouse {
+  bottom: 108px;
+  height: 144px;
+  animation: wave 6.22222s 0.1s infinite linear;
+  background: url("../img/waves/wave-paint.png") 0 0 / auto 101% repeat-x;
 }
 .parallax__wave_4 {
+  bottom: 72px;
+  height: 173px;
+  animation: wave 5.77778s 0.1s infinite linear;
+  /* background: url("../img/waves/wave-paint.png") 0 0 / auto 101% repeat-x; */
 }
 .parallax__wave_5 {
+  bottom: -1px;
+  height: 230px;
+  animation: wave 4.8888s 0.1s infinite linear;
 }
 .parallax__wave_6 {
+  bottom: -72px;
+  height: 288px;
+  animation: wave 4.5s 0.1s infinite linear;
+  background: url("../img/waves/wave-paint.png") 0 0 / auto 101% repeat-x;
+}
+.parallax__lighthouse {
+  position: absolute;
+  width: 320px;
+  height: 560px;
+  right: 12%;
+  bottom: -100%;
+  background: url("../img/lighthouse.png") 0 0 no-repeat;
+  animation: lighthouse 4s 0.1s infinite alternate
+    cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .content {
   color: white;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotateZ(10deg);
+  }
+  100% {
+    transform: rotateZ(-10deg);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 10%, 0) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0, 10%, 0) rotateZ(-360deg);
+  }
+}
+
+@keyframes lighthouse {
+  0% {
+    transform: translate3d(15%, 0, 0) rotateZ(10deg);
+  }
+  100% {
+    transform: translate3d(-15%, 0, 0) rotateZ(-10deg);
+  }
 }
